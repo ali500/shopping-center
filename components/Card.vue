@@ -7,12 +7,19 @@
       <h2 class="card-title">{{ category }}</h2>
       <p>{{ title }}</p>
       <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
+        <NuxtLink :to="`/product/${id}`" class="btn btn-primary"
+          >Buy Now</NuxtLink
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-const { image, title, category } = defineProps(['image', 'title', 'category'])
+const { id, image, title, category } = defineProps([
+  'id',
+  'image',
+  'title',
+  'category',
+])
 </script>

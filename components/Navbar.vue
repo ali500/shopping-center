@@ -30,7 +30,14 @@
           <ul class="menu menu-horizontal">
             <!-- Navbar menu content here -->
             <li><NuxtLink to="/">Home</NuxtLink></li>
-            <li><NuxtLink to="/products">Products</NuxtLink></li>
+            <li>
+              <NuxtLink to="/products"
+                >Products<span
+                  v-show="store.loading"
+                  class="loading loading-spinner loading-xs"
+                ></span
+              ></NuxtLink>
+            </li>
           </ul>
         </div>
         <div class="flex-none">
@@ -51,7 +58,9 @@
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <span class="badge badge-sm indicator-item">8</span>
+                <span class="badge badge-sm indicator-item">{{
+                  store.addedProductsCount
+                }}</span>
               </div>
             </div>
             <div
@@ -59,8 +68,12 @@
               class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
             >
               <div class="card-body">
-                <span class="text-lg font-bold">8 Items</span>
-                <span class="text-info">Subtotal: $999</span>
+                <span class="text-lg font-bold"
+                  >{{ store.addedProductsCount }} Items</span
+                >
+                <span class="text-info"
+                  >Total Price: ${{ store.totalCartPrice }}</span
+                >
                 <div class="card-actions">
                   <NuxtLink to="/cart" class="btn btn-primary btn-block"
                     >View cart</NuxtLink
@@ -116,3 +129,7 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const store = useProductStore()
+</script>
