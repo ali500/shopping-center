@@ -8,7 +8,7 @@
       <p>{{ title }}</p>
       <div class="card-actions justify-end">
         <NuxtLink :to="`/product/${id}`" class="btn btn-primary"
-          >Buy Now</NuxtLink
+          >See Details</NuxtLink
         >
       </div>
     </div>

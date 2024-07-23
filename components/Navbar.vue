@@ -89,9 +89,11 @@
               class="btn btn-ghost btn-circle avatar"
             >
               <div
-                class="w-10 rounded-full flex justify-center items-center bg-gray-700"
+                class="w-10 rounded-full flex justify-center items-center bg-base-content"
               >
-                <p class="flex justify-center items-center h-full text-white">
+                <p
+                  class="flex justify-center items-center h-full text-base-100"
+                >
                   P
                 </p>
               </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-auto">
+  <div class="overflow-x-auto mt-5">
     <table v-if="productCount != 0" class="table table-xs md:table-md">
       <!-- head -->
       <thead>
@@ -42,7 +42,12 @@
         </tr>
       </tbody>
     </table>
-    <div v-else>Cart is Empty</div>
+    <div
+      v-else
+      class="flex justify-center items-center text-xl h-32 w-2/3 mx-auto md:w-full md:mx-0 rounded-lg border-2 bg-base-200"
+    >
+      Cart is Empty
+    </div>
   </div>
 </template>
 
