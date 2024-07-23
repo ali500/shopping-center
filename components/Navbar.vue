@@ -75,7 +75,10 @@
                   >Total Price: ${{ store.totalCartPrice }}</span
                 >
                 <div class="card-actions">
-                  <NuxtLink to="/cart" class="btn btn-primary btn-block"
+                  <NuxtLink
+                    to="/cart"
+                    class="btn btn-primary btn-block"
+                    active-class="cart-active-class"
                     >View cart</NuxtLink
                   >
                 </div>
