@@ -15,4 +15,7 @@
 
 <script setup>
 const store = useProductStore()
+definePageMeta({
+  middleware: 'user-login-check',
+})
 </script>

@@ -34,8 +34,8 @@ export const useProductStore = defineStore('product', {
         this.addedProducts.push({ ...product, quantity: 1 })
       }
     },
-    removeItemOfCart(productId) {
-      this.addedProducts.splice(productId, 1)
+    removeItemOfCart(index) {
+      this.addedProducts.splice(index, 1)
     },
     clearCart() {
       this.addedProducts = []

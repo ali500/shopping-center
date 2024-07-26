@@ -38,6 +38,9 @@
                 ></span
               ></NuxtLink>
             </li>
+            <li v-show="userStore.user.isLaggedIn == false">
+              <NuxtLink to="/login">Login</NuxtLink>
+            </li>
           </ul>
         </div>
         <div class="flex-none">
@@ -85,7 +88,10 @@
               </div>
             </div>
           </div>
-          <div class="dropdown dropdown-end">
+          <div
+            v-show="userStore.user.isLaggedIn == true"
+            class="dropdown dropdown-end"
+          >
             <div
               tabindex="0"
               role="button"
@@ -106,13 +112,12 @@
               class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a class="justify-between">
+                <NuxtLink to="/user/profile" class="justify-between">
                   Profile
                   <span class="badge">New</span>
-                </a>
+                </NuxtLink>
               </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
+              <li><NuxtLink to="/logout">Logout</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -130,6 +135,7 @@
         <!-- Sidebar content here -->
         <li><NuxtLink to="/">Home</NuxtLink></li>
         <li><NuxtLink to="/products">Products</NuxtLink></li>
+        <li><NuxtLink to="/login">Login</NuxtLink></li>
       </ul>
     </div>
   </div>
@@ -137,4 +143,5 @@
 
 <script setup>
 const store = useProductStore()
+const userStore = useUserStore()
 </script>
