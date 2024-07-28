@@ -1,7 +1,7 @@
 <template>
   <div class="card bg-base-100 w-full shadow-xl">
     <figure>
-      <img class="max-h-52" :src="image" alt="Shoes" />
+      <img class="max-h-52" :src="image" :alt="title + '-image'" />
     </figure>
     <div class="card-body">
       <h2 class="card-title">{{ category }}</h2>

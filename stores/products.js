@@ -1,6 +1,20 @@
 export const useProductStore = defineStore('product', {
   state: () => ({ loading: false, products: [], addedProducts: [] }),
   getters: {
+    getProductsByTitle(state) {
+      return (productTitle) => {
+        return state.products.filter((product) => {
+          const tmp = product.title.toLowerCase()
+          return tmp.includes(productTitle.toLowerCase())
+        })
+      }
+    },
+    getLatestFourProducts(state) {
+      const index = state.products.length - 4
+      const products = state.products
+      const latestProducts = products.slice(index)
+      return latestProducts
+    },
     addedProductsCount(state) {
       let quantity = 0
       this.addedProducts.forEach((element) => {
