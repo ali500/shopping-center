@@ -41,6 +41,9 @@
             <li v-show="userStore.user.isLaggedIn == false">
               <NuxtLink to="/login">Login</NuxtLink>
             </li>
+            <li v-show="userStore.user.isLaggedIn == false">
+              <NuxtLink to="/register">Register</NuxtLink>
+            </li>
           </ul>
         </div>
         <div class="flex-none">
@@ -191,7 +194,12 @@
         <!-- Sidebar content here -->
         <li><NuxtLink to="/">Home</NuxtLink></li>
         <li><NuxtLink to="/products">Products</NuxtLink></li>
-        <li><NuxtLink to="/login">Login</NuxtLink></li>
+        <li v-show="userStore.user.isLaggedIn == false">
+          <NuxtLink to="/login">Login</NuxtLink>
+        </li>
+        <li v-show="userStore.user.isLaggedIn == false">
+          <NuxtLink to="/register">Register</NuxtLink>
+        </li>
       </ul>
     </div>
   </div>
