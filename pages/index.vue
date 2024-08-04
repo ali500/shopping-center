@@ -1,6 +1,7 @@
 <template>
   <Hero />
-  <LatestProductsSection :productStore="productStore" />
+  <LatestProductsSection />
+  <CheapestProducts />
   <div class="container mx-auto">
     <!-- <Carousel /> -->
   </div>

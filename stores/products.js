@@ -15,6 +15,13 @@ export const useProductStore = defineStore('product', {
       const latestProducts = products.slice(index)
       return latestProducts
     },
+    GetFourOfTheCheapestProducts(state) {
+      const products = state.products
+        .sort((a, b) => a.price - b.price)
+        .slice(0, 4)
+
+      return products
+    },
     addedProductsCount(state) {
       let quantity = 0
       this.addedProducts.forEach((element) => {

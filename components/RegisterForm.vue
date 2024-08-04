@@ -3,6 +3,13 @@
     <div
       class="form-control mx-5 md:w-1/2 lg:w-1/3 md:mx-auto space-y-3 border border-base-300 bg-base-200 p-5 rounded-lg"
     >
+      <div>
+        <img
+          class="w-28 mx-auto"
+          src="~/assets/icons/register-icon.png"
+          alt="register icon"
+        />
+      </div>
       <label class="input input-bordered flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"

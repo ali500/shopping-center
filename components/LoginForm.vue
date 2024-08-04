@@ -3,9 +3,18 @@
     <div
       class="form-control mx-5 md:w-1/2 lg:w-1/3 md:mx-auto space-y-3 border border-base-300 bg-base-200 p-5 rounded-lg"
     >
-      <p>Hints:</p>
-      <p>Username: mor_2314</p>
-      <p>Password: 83r5^_</p>
+      <div>
+        <img
+          class="w-28 mx-auto"
+          src="~/assets/icons/login-icon.png"
+          alt="login icon"
+        />
+      </div>
+      <div class="bg-neutral text-neutral-content p-5 rounded-lg font-mono">
+        <p>Hints:</p>
+        <p>Username: mor_2314</p>
+        <p>Password: 83r5^_</p>
+      </div>
       <label class="input input-bordered flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
