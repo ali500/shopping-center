@@ -8,7 +8,7 @@
       <p class="text-neutral-content">
         Click the button opposite to see all products
       </p>
-      <button class="btn btn-neutral">See Products</button>
+      <NuxtLink to="/products" class="btn btn-neutral">See Products</NuxtLink>
     </div>
   </div>
   <CheapestProducts />
