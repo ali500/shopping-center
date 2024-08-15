@@ -35,7 +35,7 @@
     </div>
   </div>
   <!-- Toast -->
-  <Toast v-show="isProductAdded" />
+  <Toast v-show="isProductAdded">Product added to the cart.</Toast>
   <!-- end Toast -->
 </template>
 

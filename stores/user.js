@@ -9,8 +9,27 @@ export const useUserStore = defineStore('user', {
       id: null,
       username: null,
     },
+    admin: {
+      isLaggedIn: false,
+    },
   }),
   actions: {
+    adminLogin(adminName, password) {
+      if (adminName === 'myadmin' && password === 'myadmin') {
+        this.user.token = null
+        this.user.isLaggedIn = false
+        this.admin.isLaggedIn = true
+        navigateTo('/admin')
+      } else {
+        return false
+      }
+    },
+    adminLogout() {
+      this.user.token = null
+      this.user.isLaggedIn = false
+      this.admin.isLaggedIn = false
+      navigateTo('/')
+    },
     async userLogin(username, password) {
       try {
         this.loading = true

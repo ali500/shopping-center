@@ -20,7 +20,12 @@
                   d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
                 />
               </svg>
-              <input type="text" class="grow" placeholder="Admin name" />
+              <input
+                v-model.lazy="adminName"
+                type="text"
+                class="grow"
+                placeholder="Admin name"
+              />
             </label>
             <label class="admin-input">
               <svg
@@ -35,7 +40,12 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              <input type="password" class="grow" placeholder="Password" />
+              <input
+                v-model.lazy="password"
+                type="password"
+                class="grow"
+                placeholder="Password"
+              />
             </label>
             <div class="flex justify-between">
               <NuxtLink to="/" class="btn btn-neutral">Home</NuxtLink>
@@ -53,8 +63,17 @@ definePageMeta({
   layout: false,
 })
 
+const userStore = useUserStore()
+
+const adminName = ref('')
+const password = ref('')
+
 function submit() {
-  alert('submit')
+  const result = userStore.adminLogin(adminName.value, password.value)
+
+  if (result == false) {
+    alert('Admin name or password is not currect')
+  }
 }
 </script>
 

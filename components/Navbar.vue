@@ -4,7 +4,7 @@
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
       <div
-        class="navbar top-0 sticky border-b border-base-300 bg-base-100 w-full"
+        class="navbar top-0 sticky z-10 border-b border-base-300 bg-base-100 w-full"
       >
         <div class="flex-none lg:hidden">
           <label
@@ -186,7 +186,7 @@
       <!-- Page content here -->
       <slot></slot>
     </div>
-    <div class="drawer-side">
+    <div class="drawer-side z-20">
       <label
         for="my-drawer-3"
         aria-label="close sidebar"

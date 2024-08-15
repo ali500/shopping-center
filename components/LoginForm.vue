@@ -26,7 +26,12 @@
             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
           />
         </svg>
-        <input ref="username" type="text" class="grow" placeholder="Username" />
+        <input
+          v-model.lazy="username"
+          type="text"
+          class="grow"
+          placeholder="Username"
+        />
       </label>
       <label class="input input-bordered flex items-center gap-2">
         <svg
@@ -42,7 +47,7 @@
           />
         </svg>
         <input
-          ref="password"
+          v-model.lazy="password"
           type="password"
           class="grow"
           placeholder="Password"
@@ -66,13 +71,13 @@ const username = ref(null)
 const password = ref(null)
 
 async function submit() {
-  const result = await store.userLogin(
-    username.value.value,
-    password.value.value
-  )
+  const result = await store.userLogin(username.value, password.value)
 
   if (result == true) {
-    return navigateTo('/')
+    return navigateTo({
+      path: '/',
+      query: { status: 'success', message: 'your logged in' },
+    })
   } else {
     alert('user not found')
   }

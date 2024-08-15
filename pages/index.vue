@@ -12,9 +12,20 @@
     </div>
   </div>
   <CheapestProducts />
-  <div class="container mx-auto">
-    <!-- <Carousel /> -->
-  </div>
+  <Toast v-show="isShowToast" :status="routeQuery.status">{{
+    routeQuery.message
+  }}</Toast>
 </template>
 
-<script setup></script>
+<script setup>
+const isShowToast = ref(false)
+const routeQuery = useRoute().query
+console.log(routeQuery.status)
+
+if (routeQuery.status == 'success') {
+  isShowToast.value = true
+  setTimeout(() => {
+    isShowToast.value = false
+  }, 5000)
+}
+</script>

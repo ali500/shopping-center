@@ -9,12 +9,6 @@ export const useProductStore = defineStore('product', {
         })
       }
     },
-    getLatestFourProducts(state) {
-      const index = state.products.length - 4
-      const products = state.products
-      const latestProducts = products.slice(index)
-      return latestProducts
-    },
     GetFourOfTheCheapestProducts(state) {
       const products = state.products
         .sort((a, b) => a.price - b.price)

@@ -22,11 +22,13 @@
 
       <!-- latest product container -->
       <div
-        v-if="store.products.length != 0"
+        v-if="status != 'pending'"
         class="flex flex-col gap-2 md:flex-row flex-wrap"
       >
         <Card
-          v-for="product in store.getLatestFourProducts"
+          v-for="product in latestProducts
+            .slice(latestProducts.length - 4)
+            .reverse()"
           class="md:basis-[46%] lg:basis-[21%] grow"
           :key="product.id"
           :id="product.id"
@@ -51,5 +53,7 @@
 </template>
 
 <script setup>
-const store = useProductStore()
+const { data: latestProducts, status } = useFetch(
+  'https://fakestoreapi.com/products'
+)
 </script>
