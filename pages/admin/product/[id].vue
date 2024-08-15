@@ -1,7 +1,10 @@
 <template>
   <form @submit.prevent="submit">
     <div class="container mx-auto">
-      <div class="p-5 space-y-2 bg-base-100 rounded-lg w-2/3">
+      <div
+        v-if="status == 'success'"
+        class="p-5 space-y-2 bg-base-100 rounded-lg w-2/3"
+      >
         <input
           v-model.lazy="formData.title"
           type="text"
@@ -38,7 +41,7 @@
         />
         <div class="w-fit ms-auto">
           <button type="submit" class="btn btn-primary">
-            Add Product
+            Edit Product
             <span
               v-show="loading"
               class="loading loading-spinner loading-xs"
@@ -49,6 +52,10 @@
           {{ toastValues.message }}
         </Toast>
       </div>
+      <div v-else-if="status == 'pending'">
+        <span class="loading loading-spinner loading-lg"></span>
+      </div>
+      <div v-else>product not found</div>
     </div>
   </form>
 </template>
@@ -59,12 +66,28 @@ definePageMeta({
   middleware: 'admin-login-check',
 })
 
+const productId = useRoute().params.id
+
+const { data: productData, status } = useFetch(
+  `https://fakestoreapi.com/products/${productId}`
+)
+
 const formData = reactive({
   title: '',
   description: '',
   category: '',
   image: '',
   price: '',
+})
+
+watch(status, (newStatus, oldStatus) => {
+  if (newStatus == 'success') {
+    formData.title = productData.value.title
+    formData.description = productData.value.description
+    formData.category = productData.value.category
+    formData.image = productData.value.image
+    formData.price = productData.value.price
+  }
 })
 
 const toastValues = reactive({
@@ -112,7 +135,7 @@ async function submit() {
   loading.value = false
 
   if (status.value == 'success') {
-    toastValues.message = 'Your Product Added'
+    toastValues.message = 'Your Product Edited'
     toastValues.status = 'success'
     toastValues.isShow = true
 

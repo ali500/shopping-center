@@ -27,6 +27,8 @@ function handleStyle() {
     return 'alert-success text-base-100'
   } else if (props.status == 'error') {
     return 'alert-error text-base-100'
+  } else if (props.status == 'warning') {
+    return 'alert-warning'
   } else {
     return 'bg-base-content text-base-100'
   }

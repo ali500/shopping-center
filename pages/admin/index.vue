@@ -23,14 +23,27 @@
             <td>{{ product.price }}</td>
             <td>
               <div class="flex gap-2">
-                <button class="btn btn-sm btn-primary w-20">Edit</button>
-                <button class="btn btn-sm btn-error w-20">Delete</button>
+                <NuxtLink
+                  class="btn btn-sm btn-primary w-20"
+                  :to="`/admin/product/${product.id}`"
+                >
+                  Edit
+                </NuxtLink>
+                <button
+                  class="btn btn-sm btn-error w-20"
+                  @click="deleteProductHandler(product.id)"
+                >
+                  Delete
+                </button>
               </div>
             </td>
           </tr>
         </tbody>
       </table>
       <div v-else>products not found</div>
+      <Toast v-show="toastValues.isShow" :status="toastValues.status">
+        {{ toastValues.message }}
+      </Toast>
     </div>
   </div>
 </template>
@@ -45,4 +58,32 @@ const store = useProductStore()
 const { status } = useAsyncData('products', () =>
   store.fetchProducts().then(() => true)
 )
+
+const toastValues = reactive({
+  isShow: false,
+  message: '',
+  status: '',
+})
+
+async function deleteProductHandler(productId) {
+  const result = confirm('Do you want to delete this product?')
+
+  if (!result) {
+    return
+  }
+
+  const data = await $fetch(`https://fakestoreapi.com/products/${productId}`, {
+    method: 'DELETE',
+  })
+
+  if (data) {
+    toastValues.message = 'The product has been removed'
+    toastValues.status = 'warning'
+    toastValues.isShow = true
+
+    setTimeout(() => {
+      toastValues.isShow = false
+    }, 5000)
+  }
+}
 </script>
