@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto">
     <div class="overflow-x-auto">
-      <table v-if="status != 'error'" class="table bg-base-100">
+      <table v-if="status == 'success'" class="table bg-base-100">
         <!-- head -->
         <thead>
           <tr>
@@ -40,6 +40,9 @@
           </tr>
         </tbody>
       </table>
+      <div v-else-if="status == 'pending'">
+        <span class="loading loading-spinner loading-lg"></span>
+      </div>
       <div v-else>products not found</div>
       <Toast v-show="toastValues.isShow" :status="toastValues.status">
         {{ toastValues.message }}

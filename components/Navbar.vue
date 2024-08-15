@@ -40,6 +40,12 @@
                 ></span
               ></NuxtLink>
             </li>
+            <li v-show="userStore.admin.isLaggedIn == true">
+              <NuxtLink to="/admin">Admin Panel</NuxtLink>
+            </li>
+            <li v-show="userStore.admin.isLaggedIn == true">
+              <NuxtLink to="/admin/logout">Admin Logout</NuxtLink>
+            </li>
             <li v-show="userStore.user.isLaggedIn == false">
               <NuxtLink to="/login">Login</NuxtLink>
             </li>

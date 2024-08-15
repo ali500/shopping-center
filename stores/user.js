@@ -28,7 +28,13 @@ export const useUserStore = defineStore('user', {
       this.user.token = null
       this.user.isLaggedIn = false
       this.admin.isLaggedIn = false
-      navigateTo('/')
+      return navigateTo({
+        path: '/',
+        query: {
+          status: 'success',
+          message: 'admin logged out',
+        },
+      })
     },
     async userLogin(username, password) {
       try {
