@@ -1,6 +1,9 @@
 <template>
   <div class="bg-admin-login">
     <div class="container mx-auto">
+      <div class="fixed top-5 left-5">
+        <ThemeController />
+      </div>
       <form @submit.prevent="submit">
         <div class="flex justify-center items-center h-screen">
           <div
@@ -93,7 +96,7 @@ function submit() {
 
 <style scoped>
 .bg-admin-login {
-  @apply bg-gradient-to-br from-gray-50 to-gray-200;
+  @apply bg-gradient-to-br from-base-100 to-base-200;
 }
 
 .admin-input {

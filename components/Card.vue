@@ -1,6 +1,6 @@
 <template>
   <div class="card bg-base-100 w-full shadow-xl">
-    <figure>
+    <figure class="bg-white rounded-b-xl">
       <img class="max-h-52" :src="image" :alt="title + '-image'" />
     </figure>
     <div class="card-body">

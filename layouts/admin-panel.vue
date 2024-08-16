@@ -5,6 +5,10 @@
         class="h-screen min-w-60 max-w-60 sticky top-0 flex flex-col justify-between bg-base-100 text-base"
       >
         <ul class="">
+          <li class="flex items-center justify-center gap-2 p-5">
+            <p>Theme:</p>
+            <ThemeController />
+          </li>
           <li>
             <NuxtLink to="/admin" class="admin-link">
               <svg

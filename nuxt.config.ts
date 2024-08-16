@@ -2,6 +2,9 @@
 export default defineNuxtConfig({
   app: {
     head: {
+      htmlAttrs: {
+        dir: 'ltr',
+      },
       title: 'Shopping Center'
     },
   },

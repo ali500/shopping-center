@@ -27,7 +27,10 @@
             </svg>
           </label>
         </div>
-        <div class="mx-2 flex-1 px-2">Shopping Center</div>
+        <div class="mx-2 flex-1 px-2">
+          <p class="me-5">Shopping Center</p>
+          <ThemeController />
+        </div>
         <div class="hidden flex-none lg:block">
           <ul class="menu menu-horizontal">
             <!-- Navbar menu content here -->
