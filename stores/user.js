@@ -69,38 +69,21 @@ export const useUserStore = defineStore('user', {
         return false
       }
     },
-    async addUser(
-      username,
-      email,
-      password,
-      repeatPassword,
-      name,
-      address,
-      phone
-    ) {
-      if (password !== repeatPassword) {
-        console.log(password)
-        console.log(repeatPassword)
+    async addUser(formData) {
+      if (formData.password !== formData.repeatPassword) {
+        console.log(formData.password)
+        console.log(formData.repeatPassword)
         return 'password error'
-      }
-
-      const sendData = {
-        email,
-        username,
-        password,
-        name,
-        address,
-        phone,
       }
 
       try {
         this.loading = true
         const data = await $fetch('https://fakestoreapi.com/users', {
           method: 'POST',
-          body: JSON.stringify(sendData),
+          body: JSON.stringify(formData),
         })
 
-        console.log('sendData', sendData)
+        console.log('formData', formData)
 
         this.loading = false
         return data

@@ -21,7 +21,12 @@
             d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z"
           />
         </svg>
-        <input ref="username" type="text" class="grow" placeholder="Username" />
+        <input
+          v-model.lazy="formData.username"
+          type="text"
+          class="grow"
+          placeholder="Username"
+        />
       </label>
       <label class="input input-bordered flex items-center gap-2">
         <svg
@@ -37,7 +42,12 @@
             d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z"
           />
         </svg>
-        <input ref="email" type="email" class="grow" placeholder="Email" />
+        <input
+          v-model.lazy="formData.email"
+          type="email"
+          class="grow"
+          placeholder="Email"
+        />
       </label>
       <label class="input input-bordered flex items-center gap-2">
         <svg
@@ -53,7 +63,7 @@
           />
         </svg>
         <input
-          ref="password"
+          v-model.lazy="formData.password"
           type="password"
           class="grow"
           placeholder="Password"
@@ -73,7 +83,7 @@
           />
         </svg>
         <input
-          ref="repeatPassword"
+          v-model.lazy="formData.repeatPassword"
           type="password"
           class="grow"
           placeholder="Repeat password"
@@ -81,88 +91,56 @@
       </label>
       <hr />
       <input
-        :ref="
-          (el) => {
-            name.firstname = el
-          }
-        "
+        v-model.lazy="formData.name.firstname"
         type="text"
         placeholder="firstname"
         class="input input-bordered w-full"
       />
       <input
-        :ref="
-          (el) => {
-            name.lastname = el
-          }
-        "
+        v-model.lazy="formData.name.lastname"
         type="text"
         placeholder="lastname"
         class="input input-bordered w-full"
       />
       <hr />
       <input
-        :ref="
-          (el) => {
-            address.city = el
-          }
-        "
+        v-model.lazy="formData.address.city"
         type="text"
         placeholder="city"
         class="input input-bordered w-full"
       />
       <input
-        :ref="
-          (el) => {
-            address.street = el
-          }
-        "
+        v-model.lazy="formData.address.street"
         type="text"
         placeholder="street"
         class="input input-bordered w-full"
       />
       <input
-        :ref="
-          (el) => {
-            address.number = el
-          }
-        "
+        v-model.lazy="formData.address.number"
         type="text"
         placeholder="number"
         class="input input-bordered w-full"
       />
       <input
-        :ref="
-          (el) => {
-            address.zipcode = el
-          }
-        "
+        v-model.lazy="formData.address.zipcode"
         type="text"
         placeholder="zip-code"
         class="input input-bordered w-full"
       />
       <input
-        :ref="
-          (el) => {
-            address.geolocation.lat = el
-          }
-        "
+        v-model.lazy="formData.address.geolocation.lat"
         type="text"
         placeholder="geolocation: lat"
         class="input input-bordered w-full"
       />
       <input
-        :ref="
-          (el) => {
-            address.geolocation.long = el
-          }
-        "
+        v-model.lazy="formData.address.geolocation.long"
         type="text"
         placeholder="geolocation: long"
         class="input input-bordered w-full"
       />
       <input
-        ref="phone"
+        v-model.lazy="formData.phone"
         type="text"
         placeholder="phone"
         class="input input-bordered w-full"
@@ -182,45 +160,30 @@
 <script setup>
 const userStore = useUserStore()
 
-const username = ref(null)
-const email = ref(null)
-const password = ref(null)
-const repeatPassword = ref(null)
-const name = reactive({ firstname: null, lastname: null })
-const address = reactive({
-  city: null,
-  street: null,
-  number: null,
-  zipcode: null,
-  geolocation: {
-    lat: null,
-    long: null,
+const formData = reactive({
+  username: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
+  name: {
+    firstname: '',
+    lastname: '',
   },
+  address: {
+    city: '',
+    street: '',
+    number: '',
+    zipcode: '',
+    geolocation: {
+      lat: '',
+      long: '',
+    },
+  },
+  phone: '',
 })
-const phone = ref(null)
 
 async function submit() {
-  const result = await userStore.addUser(
-    username.value.value,
-    email.value.value,
-    password.value.value,
-    repeatPassword.value.value,
-    {
-      firstname: name.firstname.value,
-      lastname: name.lastname.value,
-    },
-    {
-      city: address.city.value,
-      street: address.street.value,
-      number: address.number.value,
-      zipcode: address.zipcode.value,
-      geolocation: {
-        lat: address.geolocation.lat.value,
-        long: address.geolocation.long.value,
-      },
-    },
-    phone.value.value
-  )
+  const result = await userStore.addUser(formData)
 
   if (result === 'password error') {
     alert('please check your password')

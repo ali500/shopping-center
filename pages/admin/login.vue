@@ -9,6 +9,13 @@
             <p class="text-2xl text-gray-400 text-center mb-7 mt-3">
               Admin Login
             </p>
+            <div
+              class="bg-neutral text-neutral-content p-5 rounded-lg font-mono"
+            >
+              <p>Hints:</p>
+              <p>Username: myadmin</p>
+              <p>Password: myadmin</p>
+            </div>
             <label class="admin-input">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +93,7 @@ function submit() {
 
 <style scoped>
 .bg-admin-login {
-  @apply bg-gradient-to-br from-yellow-50 to-orange-50;
+  @apply bg-gradient-to-br from-gray-50 to-gray-200;
 }
 
 .admin-input {
