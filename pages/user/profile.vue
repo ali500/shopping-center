@@ -87,7 +87,13 @@ async function deleteUserAccount(userId) {
   const result = await userStore.deleteUser(userId)
 
   if (result == true) {
-    navigateTo('/')
+    navigateTo({
+      path: '/',
+      query: {
+        status: 'warning',
+        message: 'Your account has been deleted',
+      },
+    })
   } else {
     alert('a problem has occurred')
   }

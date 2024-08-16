@@ -27,6 +27,7 @@
           />
         </svg>
         <input
+          ref="usernameInput"
           v-model.lazy="username"
           type="text"
           class="grow"
@@ -66,6 +67,12 @@
 
 <script setup>
 const store = useUserStore()
+
+const usernameInput = ref(null)
+
+onMounted(() => {
+  usernameInput.value.focus()
+})
 
 const username = ref(null)
 const password = ref(null)

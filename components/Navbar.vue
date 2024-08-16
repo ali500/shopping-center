@@ -46,10 +46,20 @@
             <li v-show="userStore.admin.isLaggedIn == true">
               <NuxtLink to="/admin/logout">Admin Logout</NuxtLink>
             </li>
-            <li v-show="userStore.user.isLaggedIn == false">
+            <li
+              v-show="
+                userStore.user.isLaggedIn == false &&
+                userStore.admin.isLaggedIn == false
+              "
+            >
               <NuxtLink to="/login">Login</NuxtLink>
             </li>
-            <li v-show="userStore.user.isLaggedIn == false">
+            <li
+              v-show="
+                userStore.user.isLaggedIn == false &&
+                userStore.admin.isLaggedIn == false
+              "
+            >
               <NuxtLink to="/register">Register</NuxtLink>
             </li>
           </ul>
@@ -202,10 +212,26 @@
         <!-- Sidebar content here -->
         <li><NuxtLink to="/">Home</NuxtLink></li>
         <li><NuxtLink to="/products">Products</NuxtLink></li>
-        <li v-show="userStore.user.isLaggedIn == false">
+        <li v-show="userStore.admin.isLaggedIn == true">
+          <NuxtLink to="/admin">Admin Panel</NuxtLink>
+        </li>
+        <li v-show="userStore.admin.isLaggedIn == true">
+          <NuxtLink to="/admin/logout">Admin Logout</NuxtLink>
+        </li>
+        <li
+          v-show="
+            userStore.user.isLaggedIn == false &&
+            userStore.admin.isLaggedIn == false
+          "
+        >
           <NuxtLink to="/login">Login</NuxtLink>
         </li>
-        <li v-show="userStore.user.isLaggedIn == false">
+        <li
+          v-show="
+            userStore.user.isLaggedIn == false &&
+            userStore.admin.isLaggedIn == false
+          "
+        >
           <NuxtLink to="/register">Register</NuxtLink>
         </li>
       </ul>

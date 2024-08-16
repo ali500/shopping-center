@@ -16,6 +16,7 @@ export const useUserStore = defineStore('user', {
   actions: {
     adminLogin(adminName, password) {
       if (adminName === 'myadmin' && password === 'myadmin') {
+        this.user.id = null
         this.user.token = null
         this.user.isLaggedIn = false
         this.admin.isLaggedIn = true
@@ -25,6 +26,7 @@ export const useUserStore = defineStore('user', {
       }
     },
     adminLogout() {
+      this.user.id = null
       this.user.token = null
       this.user.isLaggedIn = false
       this.admin.isLaggedIn = false
@@ -37,6 +39,12 @@ export const useUserStore = defineStore('user', {
       })
     },
     async userLogin(username, password) {
+      if (this.admin.isLaggedIn == true) {
+        this.user.id = null
+        this.user.token = null
+        this.user.isLaggedIn = false
+        this.admin.isLaggedIn = false
+      }
       try {
         this.loading = true
         const { token } = await $fetch('https://fakestoreapi.com/auth/login', {

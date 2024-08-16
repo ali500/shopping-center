@@ -21,6 +21,7 @@
                 />
               </svg>
               <input
+                ref="usernameInput"
                 v-model.lazy="adminName"
                 type="text"
                 class="grow"
@@ -64,6 +65,12 @@ definePageMeta({
 })
 
 const userStore = useUserStore()
+
+const usernameInput = ref(null)
+
+onMounted(() => {
+  usernameInput.value.focus()
+})
 
 const adminName = ref('')
 const password = ref('')

@@ -22,7 +22,7 @@ const isShowToast = ref(false)
 const routeQuery = useRoute().query
 console.log(routeQuery.status)
 
-if (routeQuery.status == 'success') {
+if (routeQuery.status) {
   isShowToast.value = true
   setTimeout(() => {
     isShowToast.value = false
