@@ -111,9 +111,18 @@
                 </label>
               </li>
               <li v-for="product in productsFound">
-                <NuxtLink :to="`/product/${product.id}`">{{
-                  product.title
-                }}</NuxtLink>
+                <NuxtLink :to="`/product/${product.id}`">
+                  <div class="flex gap-4 items-center">
+                    <img
+                      :src="product.image"
+                      alt="product image"
+                      class="w-10 rounded"
+                    />
+                    <p>
+                      {{ product.title }}
+                    </p>
+                  </div>
+                </NuxtLink>
               </li>
             </ul>
           </div>
