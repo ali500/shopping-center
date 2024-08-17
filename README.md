@@ -1,4 +1,9 @@
-# Nuxt 3 Minimal Starter
+# یک نمونه فروشگاه اینترنتی با Nuxt 3
+
+در این پروژه از https://fakestoreapi.com استفاده شده است.
+برای ورود به پنل مدیریت از مسیر /admin/login استفاده کنید.
+
+## Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
