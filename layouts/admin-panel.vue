@@ -132,7 +132,7 @@
           </li>
         </ul>
         <ul>
-          <hr class="border-gray-600 my-2" />
+          <hr class="border-base-300 my-2" />
           <li>
             <NuxtLink to="/" class="admin-link">
               <svg
