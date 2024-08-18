@@ -53,7 +53,8 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig()
 const { data: latestProducts, status } = useFetch(
-  'https://fakestoreapi.com/products'
+  `${config.public.baseBackendURL}/products`
 )
 </script>

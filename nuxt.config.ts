@@ -8,6 +8,12 @@ export default defineNuxtConfig({
       title: 'Shopping Center'
     },
   },
+  runtimeConfig: {
+    public: {
+      baseBackendURL: process.env.BASE_BACKEND_URL
+    },
+  },
+
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt'],

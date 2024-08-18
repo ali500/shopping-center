@@ -33,8 +33,9 @@ export const useProductStore = defineStore('product', {
   },
   actions: {
     async fetchProducts() {
+      const config = useRuntimeConfig()
       this.loading = true
-      const data = await $fetch('https://fakestoreapi.com/products')
+      const data = await $fetch(`${config.public.baseBackendURL}/products`)
       this.products = data
       this.loading = false
     },

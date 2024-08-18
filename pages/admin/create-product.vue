@@ -59,6 +59,8 @@ definePageMeta({
   middleware: 'admin-login-check',
 })
 
+const config = useRuntimeConfig()
+
 const formData = reactive({
   title: '',
   description: '',
@@ -104,10 +106,13 @@ async function submit() {
 
   loading.value = true
 
-  const { status } = await useFetch('https://fakestoreapi.com/products', {
-    method: 'POST',
-    body: JSON.stringify(formData),
-  })
+  const { status } = await useFetch(
+    `${config.public.baseBackendURL}/products`,
+    {
+      method: 'POST',
+      body: JSON.stringify(formData),
+    }
+  )
 
   loading.value = false
 

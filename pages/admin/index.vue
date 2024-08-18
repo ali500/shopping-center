@@ -57,6 +57,8 @@ definePageMeta({
   middleware: 'admin-login-check',
 })
 
+const config = useRuntimeConfig()
+
 const store = useProductStore()
 const { status } = useAsyncData('products', () =>
   store.fetchProducts().then(() => true)
@@ -75,9 +77,12 @@ async function deleteProductHandler(productId) {
     return
   }
 
-  const data = await $fetch(`https://fakestoreapi.com/products/${productId}`, {
-    method: 'DELETE',
-  })
+  const data = await $fetch(
+    `${config.public.baseBackendURL}/products/${productId}`,
+    {
+      method: 'DELETE',
+    }
+  )
 
   if (data) {
     toastValues.message = 'The product has been removed'

@@ -40,10 +40,14 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig()
+
+console.log('baseBackendURL', config.public.baseBackendURL)
+
 const id = useRoute().params.id
 const isProductAdded = ref(false)
 const { data: product, status } = useFetch(
-  `https://fakestoreapi.com/products/${id}`
+  `${config.public.baseBackendURL}/products/${id}`
 )
 const store = useProductStore()
 

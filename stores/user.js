@@ -46,14 +46,18 @@ export const useUserStore = defineStore('user', {
         this.admin.isLaggedIn = false
       }
       try {
+        const config = useRuntimeConfig()
         this.loading = true
-        const { token } = await $fetch('https://fakestoreapi.com/auth/login', {
-          method: 'POST',
-          body: JSON.stringify({
-            username,
-            password,
-          }),
-        })
+        const { token } = await $fetch(
+          `${config.public.baseBackendURL}/auth/login`,
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              username,
+              password,
+            }),
+          }
+        )
 
         const claims = decodeJwt(token)
 
@@ -77,8 +81,9 @@ export const useUserStore = defineStore('user', {
       }
 
       try {
+        const config = useRuntimeConfig()
         this.loading = true
-        const data = await $fetch('https://fakestoreapi.com/users', {
+        const data = await $fetch(`${config.public.baseBackendURL}/users`, {
           method: 'POST',
           body: JSON.stringify(formData),
         })
@@ -99,10 +104,14 @@ export const useUserStore = defineStore('user', {
     },
     async deleteUser(userId) {
       try {
+        const config = useRuntimeConfig()
         this.loading = true
-        const data = await $fetch(`https://fakestoreapi.com/users/${userId}`, {
-          method: 'DELETE',
-        })
+        const data = await $fetch(
+          `${config.public.baseBackendURL}/users/${userId}`,
+          {
+            method: 'DELETE',
+          }
+        )
 
         this.user = {
           isLaggedIn: false,
