@@ -42,8 +42,6 @@
 <script setup>
 const config = useRuntimeConfig()
 
-console.log('baseBackendURL', config.public.baseBackendURL)
-
 const id = useRoute().params.id
 const isProductAdded = ref(false)
 const { data: product, status } = useFetch(
