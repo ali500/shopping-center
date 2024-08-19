@@ -92,8 +92,6 @@ export const useUserStore = defineStore('user', {
           body: JSON.stringify(formData),
         })
 
-        console.log('data', data)
-
         this.loading = false
         return true
       } catch (error) {
