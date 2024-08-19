@@ -74,9 +74,13 @@ export const useUserStore = defineStore('user', {
       }
     },
     async addUser(formData) {
-      if (formData.password !== formData.repeatPassword) {
-        console.log(formData.password)
-        console.log(formData.repeatPassword)
+      if (
+        formData.username == '' ||
+        formData.email == '' ||
+        formData.password == ''
+      ) {
+        return 'empty'
+      } else if (formData.password !== formData.repeatPassword) {
         return 'password error'
       }
 
@@ -88,10 +92,10 @@ export const useUserStore = defineStore('user', {
           body: JSON.stringify(formData),
         })
 
-        console.log('formData', formData)
+        console.log('data', data)
 
         this.loading = false
-        return data
+        return true
       } catch (error) {
         this.loading = false
         return false

@@ -185,14 +185,22 @@ const formData = reactive({
 async function submit() {
   const result = await userStore.addUser(formData)
 
-  if (result === 'password error') {
-    alert('please check your password')
-  }
-
-  if (result == false) {
+  if (result === 'empty') {
+    alert('Please enter your username, email and password')
+  } else if (result === 'password error') {
+    alert('Please check your password')
+  } else if (result == false) {
     alert('An error has occurred')
+  } else if (result == true) {
+    navigateTo({
+      path: '/',
+      query: {
+        status: 'success',
+        message: 'User registered successfully',
+      },
+    })
   } else {
-    console.log('result', result)
+    alert('Error')
   }
 }
 </script>
