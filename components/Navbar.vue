@@ -32,7 +32,7 @@
           <ThemeController />
         </div>
         <div class="hidden flex-none lg:block">
-          <ul class="menu menu-horizontal">
+          <ul class="menu menu-horizontal gap-1">
             <!-- Navbar menu content here -->
             <li><NuxtLink to="/">Home</NuxtLink></li>
             <li>
@@ -220,7 +220,7 @@
         aria-label="close sidebar"
         class="drawer-overlay"
       ></label>
-      <ul class="menu bg-base-100 min-h-full w-80 p-4">
+      <ul class="menu gap-1 bg-base-100 min-h-full w-80 p-4">
         <!-- Sidebar content here -->
         <li><NuxtLink to="/">Home</NuxtLink></li>
         <li><NuxtLink to="/products">Products</NuxtLink></li>
