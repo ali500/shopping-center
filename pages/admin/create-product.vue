@@ -59,6 +59,10 @@ definePageMeta({
   middleware: 'admin-login-check',
 })
 
+useHead({
+  titleTemplate: '%s | Admin Create Product',
+})
+
 const config = useRuntimeConfig()
 
 const formData = reactive({

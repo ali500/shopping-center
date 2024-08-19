@@ -74,6 +74,10 @@ definePageMeta({
   middleware: 'user-login-check',
 })
 
+useHead({
+  titleTemplate: '%s | User Profile',
+})
+
 const CanUsernameBeChanged = ref(false)
 const userStore = useUserStore()
 

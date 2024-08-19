@@ -74,6 +74,10 @@ definePageMeta({
   layout: false,
 })
 
+useHead({
+  titleTemplate: '%s | Admin Login',
+})
+
 const userStore = useUserStore()
 
 const usernameInput = ref(null)

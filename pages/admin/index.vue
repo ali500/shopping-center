@@ -57,6 +57,10 @@ definePageMeta({
   middleware: 'admin-login-check',
 })
 
+useHead({
+  titleTemplate: '%s | Admin',
+})
+
 const config = useRuntimeConfig()
 
 const store = useProductStore()

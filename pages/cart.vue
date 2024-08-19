@@ -15,7 +15,12 @@
 
 <script setup>
 const store = useProductStore()
+
 definePageMeta({
   middleware: 'user-login-check',
+})
+
+useHead({
+  titleTemplate: '%s | Cart',
 })
 </script>

@@ -66,6 +66,10 @@ definePageMeta({
   middleware: 'admin-login-check',
 })
 
+useHead({
+  titleTemplate: '%s | Admin Edit Product',
+})
+
 const config = useRuntimeConfig()
 const productId = useRoute().params.id
 
