@@ -36,6 +36,7 @@
           v-model.lazy="formData.price"
           type="number"
           min="0"
+          step="0.01"
           placeholder="Product Price"
           class="input input-bordered w-full"
         />
