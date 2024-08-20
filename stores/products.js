@@ -9,16 +9,6 @@ export const useProductStore = defineStore('product', {
         })
       }
     },
-    getFourLatestProducts(state) {
-      const products = state.products
-      const length = products.length
-
-      if (products.length > 4) {
-        return products.slice(length - 4).reverse()
-      } else {
-        return products
-      }
-    },
     GetFourOfTheCheapestProducts(state) {
       const products = state.products
         .sort((a, b) => a.price - b.price)
