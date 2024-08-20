@@ -173,7 +173,7 @@
           </li>
         </ul>
       </div>
-      <div class="my-10">
+      <div class="my-10 mx-auto lg:mx-0">
         <slot />
       </div>
     </div>
