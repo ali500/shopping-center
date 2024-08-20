@@ -37,7 +37,7 @@
       </div>
       <div v-else class="flex flex-col gap-2 md:flex-row flex-wrap">
         <div
-          v-for="n in [1, 2, 3, 4]"
+          v-for="n in 4"
           class="flex md:basis-[46%] lg:basis-[21%] grow flex-col gap-4"
         >
           <div class="skeleton h-32 w-full"></div>

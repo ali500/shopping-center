@@ -22,13 +22,11 @@
 
       <!-- latest product container -->
       <div
-        v-if="status != 'pending'"
+        v-if="status == 'success'"
         class="flex flex-col gap-2 md:flex-row flex-wrap"
       >
         <Card
-          v-for="product in latestProducts
-            .slice(latestProducts.length - 4)
-            .reverse()"
+          v-for="product in products"
           class="md:basis-[46%] lg:basis-[21%] grow"
           :key="product.id"
           :id="product.id"
@@ -39,7 +37,7 @@
       </div>
       <div v-else class="flex flex-col gap-2 md:flex-row flex-wrap">
         <div
-          v-for="n in [1, 2, 3, 4]"
+          v-for="n in 4"
           class="flex md:basis-[46%] lg:basis-[21%] grow flex-col gap-4"
         >
           <div class="skeleton h-32 w-full"></div>
@@ -57,4 +55,14 @@ const config = useRuntimeConfig()
 const { data: latestProducts, status } = useFetch(
   `${config.public.baseBackendURL}/products`
 )
+
+const products = computed(() => {
+  const length = latestProducts.value?.length || 0
+
+  if (length > 4) {
+    return latestProducts.value.slice(length - 4).reverse()
+  } else {
+    return latestProducts.value
+  }
+})
 </script>
