@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseBackendURL: process.env.BASE_BACKEND_URL
+      baseBackendURL: process.env.BASE_BACKEND_URL || 'https://fakestoreapi.com'
     },
   },
 
