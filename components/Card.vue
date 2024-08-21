@@ -16,10 +16,6 @@
 </template>
 
 <script setup>
-const { id, image, title, category } = defineProps([
-  'id',
-  'image',
-  'title',
-  'category',
-])
+const props = defineProps(['product'])
+const { id, image, title, category } = toRefs(props.product)
 </script>

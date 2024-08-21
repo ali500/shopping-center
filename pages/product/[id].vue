@@ -14,9 +14,11 @@
         <h1 class="text-2xl font-bold">{{ product?.title }}</h1>
         <p class="mt-5">
           Category:
-          <NuxtLink to="/" class="ms-5 btn btn-sm">{{
-            product?.category
-          }}</NuxtLink>
+          <NuxtLink
+            :to="`/products/category/${product?.category}`"
+            class="ms-5 btn btn-sm"
+            >{{ product?.category }}</NuxtLink
+          >
         </p>
         <p class="mt-5">{{ product?.description }}</p>
         <p class="mt-5 text-xl">Price: {{ product?.price }}$</p>

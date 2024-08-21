@@ -29,10 +29,7 @@
           v-for="product in products"
           class="md:basis-[46%] lg:basis-[21%] grow"
           :key="product.id"
-          :id="product.id"
-          :title="product.title"
-          :category="product.category"
-          :image="product.image"
+          :product="product"
         />
       </div>
       <div v-else class="flex flex-col gap-2 md:flex-row flex-wrap">

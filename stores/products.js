@@ -39,6 +39,15 @@ export const useProductStore = defineStore('product', {
       this.products = data
       this.loading = false
     },
+    async fetchSpecificCategory(category) {
+      const config = useRuntimeConfig()
+      this.loading = true
+      const data = await $fetch(
+        `${config.public.baseBackendURL}/products/category/${category}`
+      )
+      this.products = data
+      this.loading = false
+    },
     addToCart(product) {
       const addedProduct = this.addedProducts.find(
         (element) => element.id == product.id
