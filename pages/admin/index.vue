@@ -110,18 +110,13 @@ useHead({
   titleTemplate: '%s | Admin',
 })
 
+const [toastValues, showToast] = useShowToast()
 const config = useRuntimeConfig()
 
 const store = useProductStore()
 const { status } = useAsyncData('products', () =>
   store.fetchProducts().then(() => true)
 )
-
-const toastValues = reactive({
-  isShow: false,
-  message: '',
-  status: '',
-})
 
 async function deleteProductHandler(productId) {
   const result = confirm('Do you want to delete this product?')
@@ -138,13 +133,7 @@ async function deleteProductHandler(productId) {
   )
 
   if (data) {
-    toastValues.message = 'The product has been removed'
-    toastValues.status = 'warning'
-    toastValues.isShow = true
-
-    setTimeout(() => {
-      toastValues.isShow = false
-    }, 5000)
+    showToast('The product has been removed', 'warning', 5000)
   }
 }
 </script>
