@@ -100,9 +100,18 @@ export const useUserStore = defineStore('user', {
       }
     },
     userLogout() {
+      this.user.id = null
       this.user.token = null
       this.user.isLaggedIn = false
-      navigateTo('/')
+      this.admin.isLaggedIn = false
+
+      return navigateTo({
+        path: '/',
+        query: {
+          status: 'success',
+          message: 'user logged out',
+        },
+      })
     },
     async deleteUser(userId) {
       try {
