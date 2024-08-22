@@ -37,15 +37,17 @@
     </div>
   </div>
   <!-- Toast -->
-  <Toast v-show="isProductAdded">Product added to the cart.</Toast>
+  <Toast v-show="toastValues.isShow" :status="toastValues.status">{{
+    toastValues.message
+  }}</Toast>
   <!-- end Toast -->
 </template>
 
 <script setup>
 const config = useRuntimeConfig()
+const [toastValues, showToast] = useShowToast()
 
 const id = useRoute().params.id
-const isProductAdded = ref(false)
 const { data: product, status } = useFetch(
   `${config.public.baseBackendURL}/products/${id}`
 )
@@ -58,9 +60,6 @@ function addToCart(product) {
 
   store.addToCart(product)
 
-  isProductAdded.value = true
-  setTimeout(() => {
-    isProductAdded.value = false
-  }, 3000)
+  showToast('Product added to the cart.', '', 3000)
 }
 </script>

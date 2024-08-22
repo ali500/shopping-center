@@ -12,19 +12,16 @@
     </div>
   </div>
   <CheapestProducts />
-  <Toast v-show="isShowToast" :status="routeQuery.status">{{
-    routeQuery.message
+  <Toast v-show="toastValues.isShow" :status="toastValues.status">{{
+    toastValues.message
   }}</Toast>
 </template>
 
 <script setup>
-const isShowToast = ref(false)
+const [toastValues, showToast] = useShowToast()
 const routeQuery = useRoute().query
 
 if (routeQuery.status) {
-  isShowToast.value = true
-  setTimeout(() => {
-    isShowToast.value = false
-  }, 5000)
+  showToast(routeQuery.message, routeQuery.status, 5000)
 }
 </script>
