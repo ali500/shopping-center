@@ -6,6 +6,7 @@
         button-name="Add Product"
         :form-data="form"
         :loading="loading"
+        :is-edit-mode="false"
       />
       <Toast v-show="toastValues.isShow" :status="toastValues.status">
         {{ toastValues.message }}

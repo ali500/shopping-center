@@ -1,5 +1,9 @@
 <template>
   <form @submit.prevent="$emit('productSubmit', formData)">
+    <!-- show image in edit mode -->
+    <div v-show="isEditMode" class="w-24 mx-auto mb-5">
+      <img :src="formData.image" alt="product image" />
+    </div>
     <div class="grid grid-cols-2 gap-2">
       <!-- Title -->
       <label class="form-control w-full">
@@ -28,16 +32,17 @@
         />
       </label>
       <!-- Category -->
-      <label class="form-control w-full">
+      <label class="form-control w-full max-w-xs">
         <div class="label">
           <span class="label-text">Category</span>
         </div>
-        <input
-          v-model="formData.category"
-          type="text"
-          placeholder="Type here"
-          class="input input-bordered w-full"
-        />
+        <select v-model="formData.category" class="select select-bordered">
+          <option disabled selected>Pick one</option>
+          <option>men's clothing</option>
+          <option>women's clothing</option>
+          <option>jewelery</option>
+          <option>electronics</option>
+        </select>
       </label>
       <!-- Image Address -->
       <label class="form-control w-full">
@@ -76,5 +81,8 @@
 </template>
 
 <script setup>
-const props = defineProps(['buttonName', 'formData', 'loading'])
+const props = defineProps(['buttonName', 'formData', 'loading', 'isEditMode'])
+if (props.formData.category == '') {
+  props.formData.category = 'Pick one'
+}
 </script>

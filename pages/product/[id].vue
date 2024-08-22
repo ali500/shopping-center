@@ -1,5 +1,6 @@
 <template>
   <div class="container mx-auto">
+    <Breadcrumbs :items="items" />
     <div class="flex mt-5 flex-col gap-5 md:flex-row">
       <div class="basis-1/2 flex justify-center">
         <img
@@ -45,13 +46,26 @@
 
 <script setup>
 const config = useRuntimeConfig()
+const store = useProductStore()
 const [toastValues, showToast] = useShowToast()
-
 const id = useRoute().params.id
+
 const { data: product, status } = useFetch(
   `${config.public.baseBackendURL}/products/${id}`
 )
-const store = useProductStore()
+
+const items = [
+  {
+    link: '/',
+    text: 'Home',
+  },
+  {
+    text: 'product',
+  },
+  {
+    text: id,
+  },
+]
 
 function addToCart(product) {
   if (product == null) {

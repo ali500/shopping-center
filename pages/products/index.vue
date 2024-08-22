@@ -1,5 +1,6 @@
 <template>
   <div class="container mx-auto">
+    <Breadcrumbs :items="items" />
     <ProductsList :status="status" :products="store.products" />
   </div>
 </template>
@@ -8,6 +9,16 @@
 useHead({
   titleTemplate: '%s | Products',
 })
+
+const items = [
+  {
+    link: '/',
+    text: 'Home',
+  },
+  {
+    text: 'products',
+  },
+]
 
 const store = useProductStore()
 

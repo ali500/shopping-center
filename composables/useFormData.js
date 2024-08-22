@@ -16,10 +16,13 @@ export const useFormData = () => {
   }
 
   function validate(formData) {
+    console.log('formData', formData)
+
     if (
       formData.title == '' ||
       formData.description == '' ||
       formData.category == '' ||
+      formData.category == 'Pick one' ||
       formData.image == '' ||
       formData.price == ''
     ) {

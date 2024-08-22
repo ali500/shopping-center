@@ -1,5 +1,6 @@
 <template>
   <div class="container mx-auto">
+    <Breadcrumbs :items="items" />
     <ProductsList :status="status" :products="store.products" />
   </div>
 </template>
@@ -10,6 +11,20 @@ const category = useRoute().params.category
 useHead({
   titleTemplate: '%s | ' + category,
 })
+
+const items = [
+  {
+    link: '/',
+    text: 'Home',
+  },
+  {
+    link: '/products',
+    text: 'products',
+  },
+  {
+    text: 'category',
+  },
+]
 
 const store = useProductStore()
 
