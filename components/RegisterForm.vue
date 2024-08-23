@@ -89,7 +89,7 @@
           placeholder="Repeat password"
         />
       </label>
-      <hr />
+      <hr class="border-base-300" />
       <input
         v-model.lazy="formData.name.firstname"
         type="text"
@@ -102,7 +102,7 @@
         placeholder="lastname"
         class="input input-bordered w-full"
       />
-      <hr />
+      <hr class="border-base-300" />
       <input
         v-model.lazy="formData.address.city"
         type="text"
